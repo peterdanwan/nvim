@@ -12,9 +12,10 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   })
 end
 
+vim.g.mapleader = " "
 vim.opt.rtp:prepend(lazypath)
 
-require("peter")
 require("lazy").setup("plugins", opts)
+require("peter")
 
 vim.keymap.set('n', '<C-q>', '<C-v>', { noremap = true })
