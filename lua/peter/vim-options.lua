@@ -25,7 +25,6 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Allows me to be able to use system clipboard
 vim.opt.clipboard:append("unnamedplus")
-vim.g.mapleader = " "
 
 -- Enable transparency
 vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
