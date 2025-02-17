@@ -4,9 +4,6 @@
 -- Sets the "leader" key for our custom commands
 vim.g.mapleader = " "
 
--- Send visual selection to windows clipboard (This is for Windows)
-vim.keymap.set("x", "<leader>ys", ":w +y")
-
 -- Delete visually selected text, send it to the blackhole register ("_d), then (P)aste before the cursor
 -- This lets us preserve the contents of our "yank" register ("0)
 vim.keymap.set("x", "<leader>p", [["_dP]])
