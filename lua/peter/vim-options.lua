@@ -1,4 +1,5 @@
 -- lua/peter/vim-options.lua
+
 ---------------------- Basic settings ----------------------
 
 --- Using the "Vim API" (i.e., vim.cmd() calls) to execute various "Ex commands"
