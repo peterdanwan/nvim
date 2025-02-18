@@ -7,4 +7,4 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<C-q>", "<C-v>", { noremap = true })
 
 -- Show hover documentation
-vim.keymap.set({"n", "v"}, "gh", vim.lsp.buf.hover, { desc = "Show hover documentation" })
+vim.keymap.set({"n", "v"}, "Shift+k", vim.lsp.buf.hover, { desc = "Show hover documentation" })
