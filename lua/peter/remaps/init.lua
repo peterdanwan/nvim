@@ -1,15 +1,13 @@
 -- lua/peter/remaps/init.lua
 
 ------------------------------ COMMON SETTINGS ----------------------------
--- Sets the "leader" key for our custom commands
-vim.g.mapleader = " "
-
 -- Delete visually selected text, send it to the blackhole register ("_d), then (P)aste before the cursor
 -- This lets us preserve the contents of our "yank" register ("0)
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- Paste the last thing that was yanked
-vim.keymap.set({"n", "v"}, "<leader>yp", '"0P')
+vim.keymap.set({"n", "v"}, "<leader>yp", '"0p')
+vim.keymap.set({"n", "v"}, "<leader>yP", '"0P')
 
 -- Add line below while staying in insert mode
 vim.keymap.set("n", "<leader>o", 'o<Esc>', {silent = true})
@@ -20,6 +18,7 @@ vim.keymap.set("n", "<leader>3", "i#<ESC>", { silent = true})
 vim.keymap.set("n", "<leader>h", "i-<ESC>", { silent = true})
 
 ------------------------ ENVIRONMENT SPECIFIC SETTINGS --------------------
+
 -- Detect environment
 local in_vscode = vim.g.vscode ~= nil
 
