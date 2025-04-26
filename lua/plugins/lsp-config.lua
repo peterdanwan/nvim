@@ -12,7 +12,7 @@ return {
     config = function ()
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({})
-      lspconfig.eslint.setup({})
+      -- lspconfig.eslint.setup({})
     end
   },
   {
@@ -21,7 +21,7 @@ return {
       require("mason-lspconfig").setup({
         ensure_installed = {
           "lua_ls",
-          "eslint"
+          -- "eslint"
         }
       })
     end
