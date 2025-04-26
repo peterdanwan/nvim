@@ -10,3 +10,4 @@ vim.keymap.set({"n", "v"}, "gf", vscode_command("editor.action.openLink"), { sil
 vim.keymap.set("n", "<C-p>", vscode_command("workbench.action.quickOpen"), { silent = true })
 vim.keymap.set("n", "<leader>pf", vscode_command("workbench.action.quickOpen"), { silent = true })
 vim.keymap.set("n", "<leader>fg", vscode_command("workbench.action.findInFiles"), { silent = true })
+vim.keymap.set({"n", "v"}, "<leader>kw", vscode_command("workbench.action.closeAllEditors"), { silent = true })
