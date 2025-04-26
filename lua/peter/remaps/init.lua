@@ -2,12 +2,17 @@
 
 ------------------------------ COMMON SETTINGS ----------------------------
 -- Delete visually selected text, send it to the blackhole register ("_d), then (P)aste before the cursor
--- This lets us preserve the contents of our "yank" register ("0)
+-- This lets us preserve the contents of our "unnamed" register ("")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- Paste the last thing that was yanked
 vim.keymap.set({"n", "v"}, "<leader>yp", '"0p')
 vim.keymap.set({"n", "v"}, "<leader>yP", '"0P')
+
+-- Enter the `:` command, then quit and/or save
+vim.api.nvim_set_keymap('n', '<leader>wq', ':wq', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>w', ':w', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>q', ':q', { noremap = true })
 
 -- Add line below while staying in insert mode
 vim.keymap.set("n", "<leader>o", 'o<Esc>', {silent = true})
