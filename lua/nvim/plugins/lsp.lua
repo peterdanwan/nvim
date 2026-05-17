@@ -7,22 +7,23 @@ local builtin = require("telescope.builtin")
 local set = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
 local user_config_group = require("core.augroups").user_config_group
+local diagnostic = vim.diagnostic
 
 local diagnostic_signs = {
-  Error = "",
-  Warn = "",
-  Hint = "",
-  Info = "",
+  Error = " ",
+  Warn = " ",
+  Hint = " ",
+  Info = " ",
 }
 
-vim.diagnostic.config({
+diagnostic.config({
   virtual_text = { prefix = "●", spacing = 4 },
   signs = {
     text = {
-      [vim.diagnostic.severity.ERROR] = diagnostic_signs.Error,
-      [vim.diagnostic.severity.WARN] = diagnostic_signs.Warn,
-      [vim.diagnostic.severity.INFO] = diagnostic_signs.Info,
-      [vim.diagnostic.severity.HINT] = diagnostic_signs.Hint,
+      [diagnostic.severity.ERROR] = diagnostic_signs.Error,
+      [diagnostic.severity.WARN] = diagnostic_signs.Warn,
+      [diagnostic.severity.INFO] = diagnostic_signs.Info,
+      [diagnostic.severity.HINT] = diagnostic_signs.Hint,
     },
   },
   underline = true,
@@ -62,20 +63,20 @@ local function lsp_on_attach(ev)
   end, opts)
 
   set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-  vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
+  set("n", "<F2>", vim.lsp.buf.rename, opts)
 
   set("n", "<leader>D", function()
-    vim.diagnostic.open_float({ scope = "line" })
+    diagnostic.open_float({ scope = "line" })
   end, opts)
   set("n", "<leader>d", function()
-    vim.diagnostic.open_float({ scope = "cursor" })
+    diagnostic.open_float({ scope = "cursor" })
   end, opts)
   set("n", "<leader>nd", function()
-    vim.diagnostic.jump({ count = 1 })
+    diagnostic.jump({ count = 1 })
   end, opts)
 
   set("n", "<leader>pd", function()
-    vim.diagnostic.jump({ count = -1 })
+    diagnostic.jump({ count = -1 })
   end, opts)
 
   set("n", "K", function()
@@ -128,10 +129,10 @@ end
 autocmd("LspAttach", { group = user_config_group, callback = lsp_on_attach })
 
 set("n", "<leader>q", function()
-  vim.diagnostic.setloclist({ open = true })
+  diagnostic.setloclist({ open = true })
 end, { desc = "Open diagnostic list" })
 
-set("n", "<leader>dl", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
+set("n", "<leader>dl", diagnostic.open_float, { desc = "Show line diagnostics" })
 
 require("blink.cmp").setup({
   keymap = {
@@ -194,6 +195,7 @@ lsp.config["*"] = {
 -- ***************************************************************************
 -- NOTE: lsp.config is dealing with the raw, lsp that we install via Mason
 -- NOTE: lsp.enable deals with calling the raw lsp with predefined defaults from nvim-lspconfig and it might be named something different
+-- Ensure you actually install the language servers via Mason so that once they're installed, you can tell Neovim how you want to configure them and enable them
 -- ***************************************************************************
 
 lsp.config("lua_ls", {
@@ -520,8 +522,8 @@ local function setupLuaSnip()
   end
 
   -- Match VS Code select-mode behaviour for placeholders
-  vim.keymap.set("s", "<BS>", "<C-g>c", { desc = "Delete placeholder, stay in insert mode" })
-  vim.keymap.set("s", "<Del>", "<C-g>c", { desc = "Delete placeholder, stay in insert mode" })
+  set("s", "<BS>", "<C-g>c", { desc = "Delete placeholder, stay in insert mode" })
+  set("s", "<Del>", "<C-g>c", { desc = "Delete placeholder, stay in insert mode" })
 end
 
 setupLuaSnip()
