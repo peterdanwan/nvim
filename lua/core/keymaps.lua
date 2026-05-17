@@ -7,7 +7,7 @@ local set = vim.keymap.set
 set("x", "<leader>p", '"_dP', {
   desc = 'Paste over the visually selected text without overwriting the last yanked/deleted thing. NOTE, can switch to `"_d"0P`',
 })
-set("i", "<C-v>", "<esc>pi", { desc = "Paste in insert mode" })
+set("i", "<C-v>", "<esc>pa", { desc = "Paste in insert mode and ensure cursor is appended to the end" })
 set({ "i" }, "<C-H>", "<C-w>", { desc = "Delete the previous part of the word (up to where your cursor is)" })
 set({ "n", "v" }, "<leader>o<CR>", "o<esc>", { desc = "opens line below and remains in insert mode", nowait = true })
 set({ "n", "v" }, "<leader>O<CR>", "O<esc>", { desc = "opens line above and remains in insert mode", nowait = true })
